@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { axiosInstance } from "../helper/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";

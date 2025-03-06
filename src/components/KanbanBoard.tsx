@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { DndContext, DragEndEvent, closestCorners } from "@dnd-kit/core";
 import { ColumnContainer } from "./ColumnContainer";
 import { getTasks, updateTasks, Task } from "../helper/tasks";

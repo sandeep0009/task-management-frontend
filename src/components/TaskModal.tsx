@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createTask, updateTasks, Task } from "../helper/tasks";
 
 type TaskModalProps = {
@@ -9,7 +9,7 @@ type TaskModalProps = {
 
 export const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onTaskSaved }) => {
   const [title, setTitle] = useState(task?.title || "");
-  const [status, setStatus] = useState(task?.status || "todo");
+  const [status] = useState(task?.status || "todo");
 
   const handleSubmit = async () => {
     task ? await updateTasks(task.id, { title, status }) : await createTask(title, status);
