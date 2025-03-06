@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { axiosInstance } from "../helper/axiosInstance";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const signUpSchema = z.object({
@@ -101,7 +101,7 @@ export const Signup = () => {
         </form>
         <p className="text-center text-gray-600 mt-4">
           Already have an account?
-          <a href="/signin" className="text-blue-500 hover:underline"> Sign In</a>
+          <Link to="/signin" className="text-blue-500 hover:underline"> Sign In</Link>
         </p>
       </motion.div>
     </div>
