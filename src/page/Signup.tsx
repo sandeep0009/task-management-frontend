@@ -18,6 +18,8 @@ export const Signup = () => {
 
     const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
+        console.log(formData);
+        console.log("clicked")
         const res=await axiosInstance.post('/signup',formData);
         if(res.status===200){
             localStorage.setItem("token",res.data.token);
@@ -33,7 +35,7 @@ export const Signup = () => {
           className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg"
         >
           <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Full Name"
@@ -55,7 +57,7 @@ export const Signup = () => {
             <button
               type="submit"
               className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition"
-              onClick={(e)=>handleSubmit}
+            
             >
               Sign Up
             </button>

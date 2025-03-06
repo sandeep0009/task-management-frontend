@@ -20,10 +20,27 @@ const KanbanBoard: React.FC = () => {
 
   useEffect(() => {
     getTasks().then((data) => {
-      setColumns(initialColumns.map(col => ({
-        ...col,
-        tasks: data.filter((task:any) => task.status === col.id),
-      })));
+      console.log("Raw tasks data:", data);
+      
+      const processedColumns = initialColumns.map(col => {
+        const columnTasks = data.filter((task: Task) => {
+          console.log(`Checking task: `, task);
+          console.log(`Task status: ${task.status}, Column ID: ${col.id}`);
+          return task.status.toLowerCase() === col.id;
+        });
+        
+        console.log(`Tasks for ${col.id}:`, columnTasks);
+        
+        return {
+          ...col,
+          tasks: columnTasks
+        };
+      });
+  
+      console.log("Processed columns:", processedColumns);
+      setColumns(processedColumns);
+    }).catch(error => {
+      console.error("Error fetching tasks:", error);
     });
   }, []);
 
@@ -55,7 +72,7 @@ const KanbanBoard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="mt-25">
       <button className="bg-green-500 text-white px-4 py-2 mb-4" onClick={() => setIsModalOpen(true)}>
         Add Task
       </button>

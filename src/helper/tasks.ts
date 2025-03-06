@@ -9,13 +9,13 @@ export type Task={
     status:string
 }
 export const getTasks=async()=>{
-    const data=await axiosInstance.get('/findAll');
+    const data=await axiosInstance.get('/all');
     return data.data;
 }
 
 
 export const updateTasks=async(id:string, updates: Partial<{ title: string; description: string; status: string }>)=>{
-    const data=await axiosInstance.put(`/update/${id}`,{updates});
+    const data=await axiosInstance.put(`/${id}`,{updates});
     return data.data;
 }
 
