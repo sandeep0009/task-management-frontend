@@ -12,6 +12,9 @@ export const Navbar = () => {
             setIsLoggedIn(true);
         }
     }, []);
+    const handleLogin = () => {
+        navigate('/signin');
+    }
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -65,11 +68,7 @@ export const Navbar = () => {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="px-4 py-2 rounded-lg text-primary-600 hover:text-primary-700"
-                                    onClick={() => {
-                                        // Simulate login action
-                                        localStorage.setItem('token', 'dummy-token');
-                                        setIsLoggedIn(true);
-                                    }}
+                                    onClick={handleLogin}
                                 >
                                     Log In
                                 </motion.button>
@@ -77,6 +76,7 @@ export const Navbar = () => {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     className="px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700"
+                                    onClick={() => navigate('/signup')}
                                 >
                                     Sign Up
                                 </motion.button>
