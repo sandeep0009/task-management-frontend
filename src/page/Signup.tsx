@@ -46,7 +46,7 @@ export const Signup = () => {
 
     try {
       const res = await axiosInstance.post("/signup", formData);
-      if (res.status === 200) {
+      if (res.status === 201) {
         localStorage.setItem("token", res.data.token);
         router("/task");
       }
