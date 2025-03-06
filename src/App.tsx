@@ -5,7 +5,7 @@ import { Signup } from "./page/Signup"
 import { Layout } from "./components/Layout"
 import { Home } from "./page/Home"
 import { Task } from "./page/Task"
-import { PrivatRoute } from "./components/PrivateRoute"
+import { PrivateRoute } from "./components/PrivateRoute"
 function App() {
 
   return (
@@ -15,7 +15,7 @@ function App() {
       <Route index element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
-      <Route path="/task" element={<PrivatRoute component={Task}/>}/>
+      <Route path="/task" element={<PrivateRoute component={Task}/>}/>
       </Route>
     </Routes>
     </>

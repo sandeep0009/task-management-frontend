@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const navigate=useNavigate();
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -15,6 +16,7 @@ export const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
+        navigate('/signin');
         console.log("User logged out");
     };
 

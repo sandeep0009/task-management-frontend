@@ -22,7 +22,7 @@ export const updateTasks=async(id:string, updates: Partial<{ title: string; stat
 }
 
 export const createTask=async(title:string,status:string)=>{
-    if (!status) status = "todo";
+    if (!status) status = "todo";          
     const data=await axiosInstance.post('/create',{title,status});
     return data.data;
 }

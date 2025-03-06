@@ -1,17 +1,19 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-interface PrivateRouteProps{
-    component:React.FC
+interface PrivateRouteProps {
+    component: React.FC;
 }
 
-export const PrivatRoute=({component:Component}:PrivateRouteProps)=>{
-    const token=localStorage.getItem('token');
-    const navigate=useNavigate();
-    if(!token){
-        navigate('/signup');
-        return null;
+export const PrivateRoute = ({ component: Component }: PrivateRouteProps) => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-    }
-    return <Component/>
-}
+    useEffect(() => {
+        if (!token) {
+            navigate("/signup");
+        }
+    }, [token, navigate]);
+
+    return token ? <Component /> : null;
+};
