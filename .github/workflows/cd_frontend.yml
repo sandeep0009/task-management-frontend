@@ -1,0 +1,17 @@
+
+name: 'deploy frontend'
+on:
+  push:
+    branches:
+      - [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout fronted
+      uses: actions/checkout@v2
+    - name: install dependencies
+      run: npm install
+    - name: build project
+      run: npm run build
